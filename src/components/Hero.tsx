@@ -23,7 +23,7 @@ export default function Hero() {
         <div className="relative max-w-xl">
           <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white text-sm font-medium px-4 py-1.5 rounded-full mb-7 backdrop-blur-sm">
             <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-            Centro veterinario · Mollina, Málaga
+            <span>Centro veterinario · Mollina, Málaga</span>
           </span>
 
           <h1 className="text-5xl md:text-6xl font-extrabold text-white leading-[1.08] tracking-tight">

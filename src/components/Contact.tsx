@@ -59,7 +59,7 @@ export default function Contact() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSent(true);
   };
@@ -133,10 +133,11 @@ export default function Contact() {
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1.5">
                       Nombre completo *
                     </label>
                     <input
+                      id="name"
                       type="text"
                       name="name"
                       required
@@ -147,10 +148,11 @@ export default function Contact() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1.5">
                       Teléfono *
                     </label>
                     <input
+                      id="phone"
                       type="tel"
                       name="phone"
                       required
@@ -163,10 +165,11 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1.5">
                     Email
                   </label>
                   <input
+                    id="email"
                     type="email"
                     name="email"
                     value={form.email}
@@ -177,10 +180,11 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                  <label htmlFor="pet" className="block text-sm font-medium text-gray-700 mb-1.5">
                     Tipo de mascota
                   </label>
                   <select
+                    id="pet"
                     name="pet"
                     value={form.pet}
                     onChange={handleChange}
@@ -196,10 +200,11 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1.5">
                     Mensaje *
                   </label>
                   <textarea
+                    id="message"
                     name="message"
                     required
                     rows={4}

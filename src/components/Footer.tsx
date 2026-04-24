@@ -24,7 +24,9 @@ export default function Footer() {
               {["Facebook", "Instagram"].map((sn) => (
                 <a
                   key={sn}
-                  href="#"
+                  href={sn === "Facebook" ? "https://facebook.com" : "https://instagram.com"}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={sn}
                   className="w-9 h-9 bg-navy-700 hover:bg-navy-600 rounded-lg flex items-center justify-center transition-colors"
                 >
@@ -86,7 +88,7 @@ export default function Footer() {
             </ul>
             <div className="mt-5 flex items-center gap-2 text-emerald-400 text-sm">
               <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-              Urgencias 24h disponibles
+              <span>Urgencias 24h disponibles</span>
             </div>
           </div>
         </div>
@@ -94,9 +96,9 @@ export default function Footer() {
         <div className="mt-12 pt-6 border-t border-navy-700 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-navy-400">
           <p>© {year} TROT Centro Veterinario · Mollina, Málaga</p>
           <div className="flex gap-4">
-            <a href="#" className="hover:text-white transition-colors">Aviso legal</a>
-            <a href="#" className="hover:text-white transition-colors">Política de privacidad</a>
-            <a href="#" className="hover:text-white transition-colors">Cookies</a>
+            <a href="/aviso-legal" className="hover:text-white transition-colors">Aviso legal</a>
+            <a href="/privacidad" className="hover:text-white transition-colors">Política de privacidad</a>
+            <a href="/cookies" className="hover:text-white transition-colors">Cookies</a>
           </div>
         </div>
       </div>

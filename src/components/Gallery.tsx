@@ -55,9 +55,9 @@ export default function Gallery() {
             Fila 1: [wide 2cols] [small 1col]
             Fila 2: [small] [small] [small]           */}
         <div className="grid grid-cols-3 grid-rows-2 gap-3 h-[480px] fade-in delay-200">
-          {photos.map((photo, i) => (
+          {photos.map((photo) => (
             <div
-              key={i}
+              key={photo.src}
               className={`relative overflow-hidden rounded-2xl group cursor-pointer ${photo.cls}`}
             >
               <Image
