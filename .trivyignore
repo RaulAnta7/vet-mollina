@@ -1,0 +1,5 @@
+# PostCSS < 8.5.10 XSS (GHSA-qx2v-qp2m-jg93)
+# Bundled inside Next.js internals. The only "fix" npm audit suggests
+# is downgrading Next.js to 9.x, which is a breaking change.
+# Suppressed until Next.js releases an update with postcss >= 8.5.10.
+GHSA-qx2v-qp2m-jg93
