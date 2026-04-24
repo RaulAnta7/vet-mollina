@@ -1,4 +1,4 @@
-name: CI/CD
+name: CI/CD Pipeline
 
 on:
   push:
@@ -6,15 +6,23 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read
+  security-events: write   # CodeQL + Trivy SARIF upload
+  actions: read
+  pull-requests: write     # Comentar URL de preview en PRs
+
 jobs:
-  # ─── CI: lint + build ────────────────────────────────────────────────────────
-  ci:
-    name: CI — Lint & Build
+  # ── JOB 1: Calidad — lint + build + SonarCloud ───────────────────────────────
+  quality:
+    name: "Quality: Build + SonarCloud"
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # SonarCloud necesita el historial completo
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -31,11 +39,56 @@ jobs:
       - name: Build
         run: npm run build
 
-  # ─── Deploy preview (en cada PR) ─────────────────────────────────────────────
-  deploy-preview:
-    name: Deploy — Preview
+      - name: SonarCloud scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+  # ── JOB 2: Seguridad — CodeQL (SAST) + Trivy (SCA) ──────────────────────────
+  security:
+    name: "Security: SAST (CodeQL) + SCA (Trivy)"
     runs-on: ubuntu-latest
-    needs: ci
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # SAST: CodeQL — analiza el código fuente en busca de vulnerabilidades
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript-typescript
+          queries: security-and-quality
+
+      - name: CodeQL analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: /language:javascript-typescript
+
+      # SCA: Trivy — escanea dependencias en busca de CVEs conocidos
+      - name: Trivy — dependency vulnerability scan
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: fs
+          scan-ref: .
+          format: sarif
+          output: trivy-results.sarif
+          severity: CRITICAL,HIGH
+          exit-code: "1"          # falla el job si hay CRITICAL o HIGH
+
+      - name: Upload Trivy results to GitHub Security tab
+        if: always()              # sube el reporte aunque el paso anterior falle
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: trivy-results.sarif
+          category: trivy-sca
+
+  # ── JOB 3: Deploy Preview — solo en PRs, si quality + security pasan ─────────
+  deploy-preview:
+    name: "Deploy: Preview (PR)"
+    needs: [quality, security]
+    runs-on: ubuntu-latest
     if: github.event_name == 'pull_request'
     environment:
       name: Preview
@@ -74,14 +127,14 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `✅ **Preview desplegado:** ${{ steps.deploy.outputs.url }}`
+              body: `🚀 **Preview desplegado:** ${{ steps.deploy.outputs.url }}\n\n> Generado automáticamente tras pasar Quality + Security checks.`
             })
 
-  # ─── Deploy production (solo push a main) ────────────────────────────────────
+  # ── JOB 4: Deploy Production — solo push a main, si quality + security pasan ─
   deploy-production:
-    name: Deploy — Production
+    name: "Deploy: Production (main)"
+    needs: [quality, security]
     runs-on: ubuntu-latest
-    needs: ci
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     environment:
       name: Production
