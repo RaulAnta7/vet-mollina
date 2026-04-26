@@ -1,4 +1,6 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { articles } from "@/app/blog/data";
@@ -51,10 +53,11 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
       <main>
         {/* ── Hero image ── */}
         <div className="relative h-72 md:h-[26rem] w-full overflow-hidden mt-16 md:mt-20">
-          <img
+          <Image
             src={article.image}
             alt={article.imageAlt}
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-navy-900/70 via-navy-900/20 to-transparent" />
         </div>
@@ -147,7 +150,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
 
               {/* Back link */}
               <div className="mt-14 pt-8 border-t border-gray-100">
-                <a
+                <Link
                   href="/blog"
                   className="inline-flex items-center gap-2 text-navy-700 font-semibold hover:gap-3 transition-all"
                 >
@@ -155,7 +158,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                   </svg>
                   Volver al blog
-                </a>
+                </Link>
               </div>
             </article>
 
@@ -206,11 +209,12 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
                         href={`/blog/${a.slug}`}
                         className="group flex gap-4 items-start hover:opacity-80 transition-opacity"
                       >
-                        <div className="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0">
-                          <img
+                        <div className="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0 relative">
+                          <Image
                             src={a.image}
                             alt={a.imageAlt}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-300"
                           />
                         </div>
                         <div className="min-w-0">

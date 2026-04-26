@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { articles } from "@/app/blog/data";
@@ -67,11 +68,12 @@ export default function BlogPage() {
             href={`/blog/${featured.slug}`}
             className="group grid md:grid-cols-2 gap-0 rounded-3xl overflow-hidden shadow-xl border border-gray-100 mb-16 hover:shadow-2xl transition-shadow duration-300"
           >
-            <div className="aspect-[4/3] md:aspect-auto overflow-hidden">
-              <img
+            <div className="aspect-[4/3] md:aspect-auto overflow-hidden relative">
+              <Image
                 src={featured.image}
                 alt={featured.imageAlt}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
             </div>
             <div className="bg-white p-10 md:p-12 flex flex-col justify-center">
@@ -109,11 +111,12 @@ export default function BlogPage() {
                 href={`/blog/${article.slug}`}
                 className="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-lg hover:border-navy-200 transition-all duration-300 flex flex-col"
               >
-                <div className="aspect-[16/10] overflow-hidden">
-                  <img
+                <div className="aspect-[16/10] overflow-hidden relative">
+                  <Image
                     src={article.image}
                     alt={article.imageAlt}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
                 <div className="p-7 flex flex-col flex-1">

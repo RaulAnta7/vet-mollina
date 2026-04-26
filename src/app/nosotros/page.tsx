@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";
@@ -127,17 +128,18 @@ export default function NosotrosPage() {
 
             {/* Image */}
             <div className="relative">
-              <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
-                <img
+              <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl relative">
+                <Image
                   src="https://images.unsplash.com/photo-1566392785474-926a4c6257b5?auto=format&fit=crop&w=900&q=85"
                   alt="Instalaciones ecuestres del Centro Veterinario Mollina"
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
               {/* Quote card */}
               <div className="absolute -bottom-6 -left-6 hidden md:block bg-white p-6 rounded-2xl shadow-xl max-w-xs border-l-4 border-navy-700">
                 <p className="font-semibold text-navy-800 italic text-sm leading-relaxed">
-                  "Tratamos a cada paciente como si fuera nuestro propio compañero de vida."
+                  &ldquo;Tratamos a cada paciente como si fuera nuestro propio compañero de vida.&rdquo;
                 </p>
               </div>
             </div>
@@ -212,10 +214,11 @@ export default function NosotrosPage() {
                   key={f.label}
                   className={`rounded-2xl overflow-hidden relative group ${f.span}`}
                 >
-                  <img
+                  <Image
                     src={f.src}
                     alt={f.label}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy-900/75 via-navy-900/10 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-5">
@@ -254,11 +257,12 @@ export default function NosotrosPage() {
             <div className="grid md:grid-cols-3 gap-10">
               {team.map((member) => (
                 <div key={member.name} className="group">
-                  <div className="aspect-[4/5] rounded-2xl overflow-hidden mb-5 bg-navy-50">
-                    <img
+                  <div className="aspect-[4/5] rounded-2xl overflow-hidden mb-5 bg-navy-50 relative">
+                    <Image
                       src={member.photo}
                       alt={member.name}
-                      className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
+                      fill
+                      className="object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
                     />
                   </div>
                   <span className="text-xs font-bold uppercase tracking-widest text-navy-100 bg-navy-700 px-2.5 py-1 rounded mb-3 inline-block">

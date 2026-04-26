@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 export default function HeroImage({ src, alt }: { src: string; alt: string }) {
   const [failed, setFailed] = useState(false);
@@ -25,10 +26,11 @@ export default function HeroImage({ src, alt }: { src: string; alt: string }) {
   }
 
   return (
-    <img
+    <Image
       src={src}
       alt={alt}
-      className="w-full h-full object-cover"
+      fill
+      className="object-cover"
       onError={() => setFailed(true)}
     />
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 
 const services = [
   { label: "Equinos", href: "/servicios/equinos" },
@@ -47,7 +48,7 @@ export default function Navbar({ forceScrolled = false }: { forceScrolled?: bool
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2.5 group">
+          <Link href="/" className="flex items-center gap-2.5 group">
             <div className="w-9 h-9 bg-navy-600 rounded-lg flex items-center justify-center group-hover:bg-navy-700 transition-colors">
               <svg
                 className="w-5 h-5 text-white"
@@ -71,13 +72,13 @@ export default function Navbar({ forceScrolled = false }: { forceScrolled?: bool
               Centro Veterinario<br />
               <span className="text-navy-500 font-extrabold">Mollina</span>
             </span>
-          </a>
+          </Link>
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-7">
-            <a href="/" className={linkClass}>
+            <Link href="/" className={linkClass}>
               Inicio
-            </a>
+            </Link>
 
             {/* Servicios dropdown */}
             <div className="relative" ref={dropdownRef}>
@@ -167,13 +168,13 @@ export default function Navbar({ forceScrolled = false }: { forceScrolled?: bool
         }`}
       >
         <nav className="flex flex-col px-6 gap-1">
-          <a
+          <Link
             href="/"
             className="text-gray-700 font-medium hover:text-navy-600 transition-colors py-2"
             onClick={() => setMenuOpen(false)}
           >
             Inicio
-          </a>
+          </Link>
 
           {/* Mobile Servicios accordion */}
           <div>

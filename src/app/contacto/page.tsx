@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AppointmentForm from "@/components/AppointmentForm";
@@ -82,10 +83,11 @@ export default function ContactoPage() {
 
             {/* Photo */}
             <div className="relative h-[420px] rounded-2xl overflow-hidden shadow-2xl">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=900&q=85"
                 alt="Veterinario atendiendo a una mascota"
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy-900/40 to-transparent" />
             </div>

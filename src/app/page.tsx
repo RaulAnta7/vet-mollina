@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -116,10 +117,12 @@ export default function Home() {
         {/* ── 1. Hero ── */}
         <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
           <div className="absolute inset-0 z-0">
-            <img
+            <Image
               src="/hero-1.jpg"
               alt="Caballos pastando en el campo cerca de Mollina, Málaga"
-              className="w-full h-full object-cover brightness-75"
+              fill
+              className="object-cover brightness-75"
+              priority
             />
             <div className="absolute inset-0 bg-gradient-to-r from-navy-900/85 via-navy-800/40 to-transparent" />
           </div>
@@ -179,11 +182,14 @@ export default function Home() {
               <div className="w-full md:w-1/2">
                 <div className="relative">
                   <div className="absolute -top-6 -left-6 w-32 h-32 bg-navy-100 rounded-full -z-10" />
-                  <img
-                    src="https://images.unsplash.com/photo-1700665537604-412e89a285c3?auto=format&fit=crop&w=800&q=80"
-                    alt="Equipo veterinario profesional del Centro Veterinario Mollina"
-                    className="rounded-[3rem] shadow-2xl w-full aspect-[4/3] object-cover"
-                  />
+                  <div className="relative rounded-[3rem] shadow-2xl w-full aspect-[4/3] overflow-hidden">
+                    <Image
+                      src="https://images.unsplash.com/photo-1700665537604-412e89a285c3?auto=format&fit=crop&w=800&q=80"
+                      alt="Equipo veterinario profesional del Centro Veterinario Mollina"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
                   <div className="absolute -bottom-10 -right-10 bg-navy-700 p-8 rounded-3xl text-white shadow-xl hidden lg:block">
                     <span className="block text-4xl font-bold">20+</span>
                     <span className="text-sm font-medium opacity-80 uppercase tracking-wider">
@@ -229,10 +235,11 @@ export default function Home() {
               {/* Horse portrait */}
               <div className="w-full lg:w-1/3">
                 <div className="relative w-full aspect-[4/5] rounded-[3rem] overflow-hidden group">
-                  <img
+                  <Image
                     src="/equinos-hero.jpg"
                     alt="Veterinario examinando un caballo"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
@@ -273,10 +280,11 @@ export default function Home() {
               {/* Dog portrait */}
               <div className="w-full lg:w-1/3">
                 <div className="relative w-full aspect-[4/5] rounded-[3rem] overflow-hidden group">
-                  <img
+                  <Image
                     src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=600&q=85"
                     alt="Perro golden retriever en el veterinario"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
@@ -304,10 +312,11 @@ export default function Home() {
                   key={item.title}
                   className={`${item.className} relative group overflow-hidden rounded-3xl shadow-xl`}
                 >
-                  <img
+                  <Image
                     src={item.src}
                     alt={item.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end text-left">
                     <div className={item.padClass}>
@@ -338,7 +347,7 @@ export default function Home() {
             <div className="grid md:grid-cols-3 gap-8">
               {testimonials.map((t) => (
                 <div key={t.name} className="bg-white p-10 rounded-3xl shadow-sm border border-gray-100">
-                  <p className="text-gray-500 italic mb-8 leading-relaxed">"{t.text}"</p>
+                  <p className="text-gray-500 italic mb-8 leading-relaxed">&ldquo;{t.text}&rdquo;</p>
                   <div className="flex items-center gap-4">
                     <div
                       className={`w-12 h-12 ${t.bg} rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0`}
