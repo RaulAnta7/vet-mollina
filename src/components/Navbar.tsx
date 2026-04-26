@@ -121,10 +121,6 @@ export default function Navbar({ forceScrolled = false }: { forceScrolled?: bool
               Sobre Nosotros
             </a>
 
-            <a href="/blog" className={linkClass}>
-              Blog
-            </a>
-
             <a
               href="/contacto"
               className="bg-navy-600 text-white text-sm font-semibold px-5 py-2.5 rounded-lg hover:bg-navy-700 transition-colors"
@@ -220,14 +216,6 @@ export default function Navbar({ forceScrolled = false }: { forceScrolled?: bool
             onClick={() => setMenuOpen(false)}
           >
             Sobre Nosotros
-          </a>
-
-          <a
-            href="/blog"
-            className="text-gray-700 font-medium hover:text-navy-600 transition-colors py-2"
-            onClick={() => setMenuOpen(false)}
-          >
-            Blog
           </a>
 
           <a

@@ -29,6 +29,7 @@ export type ServicePageProps = {
     body: string;
     towns: string[];
   };
+  midSection?: React.ReactNode;
 };
 
 export default function ServicePage({
@@ -42,6 +43,7 @@ export default function ServicePage({
   stats,
   process,
   coverage,
+  midSection,
 }: ServicePageProps) {
   return (
     <>
@@ -150,6 +152,8 @@ export default function ServicePage({
             </div>
           </div>
         </section>
+
+        {midSection}
 
         {/* ── Process ── */}
         <section className="py-24 bg-white">

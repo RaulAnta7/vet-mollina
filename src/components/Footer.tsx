@@ -7,14 +7,17 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
+            <a href="/" className="flex items-center gap-2.5 mb-4">
               <div className="w-9 h-9 bg-navy-600 rounded-lg flex items-center justify-center">
                 <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                 </svg>
               </div>
-              <span className="text-xl font-bold tracking-wide">TROT</span>
-            </div>
+              <span className="text-sm font-bold tracking-wide leading-tight text-white">
+                Centro Veterinario<br />
+                <span className="text-navy-400 font-extrabold">Mollina</span>
+              </span>
+            </a>
             <p className="text-navy-300 text-sm leading-relaxed max-w-xs">
               Centro veterinario de referencia en Mollina. Cuidamos de tus mascotas
               con profesionalidad, dedicación y cariño.
@@ -94,7 +97,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 pt-6 border-t border-navy-700 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-navy-400">
-          <p>© {year} TROT Centro Veterinario · Mollina, Málaga</p>
+          <p>© {year} Centro Veterinario Mollina · Mollina, Málaga</p>
           <div className="flex gap-4">
             <a href="/aviso-legal" className="hover:text-white transition-colors">Aviso legal</a>
             <a href="/privacidad" className="hover:text-white transition-colors">Política de privacidad</a>

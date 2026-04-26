@@ -24,9 +24,9 @@ const icon = (path: string) => (
 
 const services = [
   {
-    icon: icon("M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"),
-    title: "Medicina Preventiva",
-    desc: "Planes de vacunación anuales, desparasitaciones internas y externas, identificación con microchip y gestión del pasaporte equino.",
+    icon: icon("M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z M15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"),
+    title: "Examen Pre-Venta",
+    desc: "Evaluación veterinaria completa previa a la compraventa: exploración clínica, radiografías, ecografía de tendones, análisis de sangre y emisión del informe oficial.",
   },
   {
     icon: icon("M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"),
@@ -98,6 +98,83 @@ const coverage = {
   ],
 };
 
+const facilityImages = [
+  {
+    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuDEplfCSfz1GiT8GKWxfNnFQCjvlrHcpS_XEcLoMbX1Zw-npYLtpaRS1lPUIaOaB3QYvNkYpHmvdS_uWeNJ5IcrR5daKIsYVJ6JVJKhei0CcxS9laK6DVlaNrjKj-gZlJW8OySlW44j3dko0hjHvA2kEDzPuZgS60NGNbI3tJEGxkmEItJSs4UxURHWvbHVbLN0cL16CgCkdx4l0qmXCRQxHPRjwNzp4jfLWhH-DNkLim0WGV_tp1Z5WDugFOpkcNMh2boNkJul",
+    alt: "Boxes de recuperación premium con madera noble y ventilación natural",
+    label: "Boxes de Recuperación",
+  },
+  {
+    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCLznVKY4z_uwhZkX1-eZHT1NSkSpRt2a27GvuoYbvs3gB8-c7WsCGdPS9fjSGSUzeeRcxBPurnvlF7HH6G43ZnAn2KFb4NZfrXA-9ObwkdJRgBlOkr0BiDQP4MyVtuyeQev_5Wqb-g91ownDquor6GXdtIpSx0zQv_bagHUvCM_iaiP03U-aaQUKdU4FZxyH-xa_5MiQOnapsC4El6CDcgq-jpW2MmmgSlHCgpWYmvoxSACked06D5DM9UKaXcUJw0Dle8_egg",
+    alt: "Área de diagnóstico con equipamiento especializado",
+    label: "Área de Diagnóstico",
+  },
+  {
+    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuDmqdCz-Kc6F2shzhpa2ByXbENA7SYPl8_XNGh3SgJgn1mEyD7-gF9Rnd-Y6vGaDkR5pyqNnz_3M7TOSi-FZgCoggBZppxTl7gjIo_2SKzILuu2Y7BJCtDKn3Zk8HPqR9Oc46KQqUDoig5FHTmxSWPmwHNUBTYHB1gchtuPjbLbSmoJCNoAsuXyvZccymuRcGpdtEb_BuNzxWKMywXwLUoidF9mfIpRVT3Fpb5fvnlgrbSPHR5jbm2gAXx6Gztj-QEFClYD9ne4",
+    alt: "Pista exterior de evaluación de cojeras con suelo profesional",
+    label: "Pista de Evaluación",
+  },
+];
+
+const facilitiesSection = (
+  <section className="py-24 bg-navy-900 overflow-hidden">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mb-14">
+        <span className="inline-block text-navy-300 text-xs font-bold tracking-widest uppercase mb-4">
+          Nuestras Instalaciones
+        </span>
+        <h2 className="text-4xl font-extrabold text-white leading-tight">
+          Instalaciones de{" "}
+          <span className="text-navy-300">Élite</span>
+        </h2>
+      </div>
+
+      {/* Mosaic grid: img1 full width top, img2+img3 side by side bottom */}
+      <div className="grid grid-cols-2 grid-rows-2 gap-3 md:gap-4 h-[520px] md:h-[600px]">
+        {/* img1 — full width top row */}
+        <div className="col-span-2 row-span-1 relative overflow-hidden rounded-2xl group">
+          <img
+            src={facilityImages[0].src}
+            alt={facilityImages[0].alt}
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy-900/70 via-transparent to-transparent" />
+          <span className="absolute bottom-4 left-4 text-white text-sm font-bold tracking-wide">
+            {facilityImages[0].label}
+          </span>
+        </div>
+
+        {/* img2 — bottom-left */}
+        <div className="col-span-1 row-span-1 relative overflow-hidden rounded-2xl group">
+          <img
+            src={facilityImages[1].src}
+            alt={facilityImages[1].alt}
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy-900/70 via-transparent to-transparent" />
+          <span className="absolute bottom-4 left-4 text-white text-sm font-bold tracking-wide">
+            {facilityImages[1].label}
+          </span>
+        </div>
+
+        {/* img3 — bottom-right */}
+        <div className="col-span-1 row-span-1 relative overflow-hidden rounded-2xl group">
+          <img
+            src={facilityImages[2].src}
+            alt={facilityImages[2].alt}
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy-900/70 via-transparent to-transparent" />
+          <span className="absolute bottom-4 left-4 text-white text-sm font-bold tracking-wide">
+            {facilityImages[2].label}
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+);
+
 export default function EquinosPage() {
   return (
     <ServicePage
@@ -116,6 +193,7 @@ export default function EquinosPage() {
       stats={stats}
       process={process}
       coverage={coverage}
+      midSection={facilitiesSection}
     />
   );
 }
