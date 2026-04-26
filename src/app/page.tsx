@@ -156,9 +156,9 @@ export default function Home() {
         </section>
 
         {/* ── 2. Highlight cards ── */}
-        <section className="bg-gray-50 pb-24">
+        <section className="bg-gray-50 pt-12 md:pt-0 pb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-3 gap-8 -mt-20 relative z-20">
+            <div className="grid md:grid-cols-3 gap-8 md:-mt-20 relative z-20">
               {highlights.map((h) => (
                 <div
                   key={h.title}
